@@ -1,0 +1,14 @@
+{
+  "project": "Franklin Preflight Checks Sidekick Extension",
+  "plugins": [
+    {
+      "id": "preflight-checks",
+      "title": "Preflight",
+      "environments": [
+        "preview",
+        "dev"
+      ],
+      "event": "preflight"
+    }
+  ]
+}

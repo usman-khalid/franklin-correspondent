@@ -7,6 +7,8 @@ import {
   decorateIcons,
   decorateSections,
   decorateBlocks,
+  decorateBlock,
+  loadBlock,
   decorateTemplateAndTheme,
   waitForLCP,
   loadBlocks,
@@ -28,6 +30,21 @@ function buildHeroBlock(main) {
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
   }
+}
+
+const preflight = ({ detail }) => {
+  const sk = detail.data;
+  console.log(sk);
+};
+
+const sk = document.querySelector('helix-sidekick');
+if (sk) {
+  sk.addEventListener('custom:preflight', preflight);
+} else {
+  document.addEventListener('sidekick-ready', () => {
+    document.querySelector('helix-sidekick')
+      .addEventListener('custom:preflight', preflight);
+  }, { once: true });
 }
 
 /**
