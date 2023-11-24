@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# Franklin Preflight Checks Sidekick Extension
+A sidekick extension that integrations with Sa11y to check the page from an accessibility perspective, and provides suggestions on things that can be improved. Custom checks can added basde on the project and/or block requirements.
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--franklin-preflight--usman-khalid.hlx.page/
+- Live: https://main--franklin-preflight--usman-khalid.hlx.live/
 
 ## Installation
 
