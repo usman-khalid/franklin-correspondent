@@ -1,14 +1,14 @@
 {
-  "project": "Franklin Preflight Checks Sidekick Extension",
+  "project": "EDS Accessibility Mode Sidekick Extension",
   "plugins": [
     {
-      "id": "preflight-checks",
-      "title": "Preflight",
+      "id": "accessibility-mode",
+      "title": "Accessibility Mode",
       "environments": [
         "preview",
         "dev"
       ],
-      "event": "preflight"
+      "event": "accessibility-mode"
     }
   ]
 }

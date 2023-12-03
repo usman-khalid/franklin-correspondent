@@ -7,15 +7,16 @@ import {
   decorateIcons,
   decorateSections,
   decorateBlocks,
-  decorateBlock,
-  loadBlock,
   decorateTemplateAndTheme,
   waitForLCP,
   loadBlocks,
   loadCSS,
 } from './aem.js';
 
+import initPreflightChecks from '../tools/sidekick/plugins/preflight/preflight.js';
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
+let isA11yModeActive = false;
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -32,19 +33,32 @@ function buildHeroBlock(main) {
   }
 }
 
-const preflight = ({ detail }) => {
-  const sk = detail.data;
-  console.log(sk);
+const accessibilityMode = async (e) => {
+  const pluginButton = e.target.shadowRoot.querySelector('.accessibility-mode > button');
+
+  isA11yModeActive = !isA11yModeActive;
+
+  if (isA11yModeActive) {
+    pluginButton.style.backgroundColor = '#fb0f01';
+    pluginButton.style.color = '#fff';
+  } else {
+    pluginButton.removeAttribute('style');
+  }
+
+  document.querySelector('body').classList.toggle('accessibility-mode-active');
+  await initPreflightChecks(isA11yModeActive);
 };
 
 const sk = document.querySelector('helix-sidekick');
+
 if (sk) {
-  sk.addEventListener('custom:preflight', preflight);
+  sk.addEventListener('custom:accessibility-mode', accessibilityMode);
 } else {
   document.addEventListener('sidekick-ready', () => {
-    document.querySelector('helix-sidekick')
-      .addEventListener('custom:preflight', preflight);
-  }, { once: true });
+    document.querySelector('helix-sidekick').addEventListener('custom:accessibility-mode', accessibilityMode);
+  }, {
+    once: true,
+  });
 }
 
 /**
