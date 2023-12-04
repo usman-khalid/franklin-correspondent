@@ -698,7 +698,7 @@ function computeAccessibleName(element) {
 
     // Process each child within node.
     child.forEach((y) => {
-      if (y.nodeType === 8) ; else if (y.nodeType === 3 || y.getAttribute('aria-labelledby') === null) {
+      if (y.nodeType === 8); else if (y.nodeType === 3 || y.getAttribute('aria-labelledby') === null) {
         returnText += y.nodeValue;
       } else {
         const target = y.getAttribute('aria-labelledby').split(/\s+/);
@@ -2547,7 +2547,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy) {
   }
 
   var _ref = isElement$1(element) ? getWindow(element) : window,
-      visualViewport = _ref.visualViewport;
+    visualViewport = _ref.visualViewport;
 
   var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
   var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
@@ -2598,17 +2598,17 @@ function contains(parent, child) {
     return true;
   } // then fallback to custom implementation with Shadow DOM support
   else if (rootNode && isShadowRoot(rootNode)) {
-      var next = child;
+    var next = child;
 
-      do {
-        if (next && parent.isSameNode(next)) {
-          return true;
-        } // $FlowFixMe[prop-missing]: need a better way to handle this...
+    do {
+      if (next && parent.isSameNode(next)) {
+        return true;
+      } // $FlowFixMe[prop-missing]: need a better way to handle this...
 
 
-        next = next.parentNode || next.host;
-      } while (next);
-    } // Give up, the result is false
+      next = next.parentNode || next.host;
+    } while (next);
+  } // Give up, the result is false
 
 
   return false;
@@ -2625,7 +2625,7 @@ function isTableElement(element) {
 function getDocumentElement(element) {
   // $FlowFixMe[incompatible-return]: assume body is always available
   return ((isElement$1(element) ? element.ownerDocument : // $FlowFixMe[prop-missing]
-  element.document) || window.document).documentElement;
+    element.document) || window.document).documentElement;
 }
 
 function getParentNode(element) {
@@ -2638,7 +2638,7 @@ function getParentNode(element) {
     // $FlowFixMe[prop-missing]
     element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
     element.parentNode || ( // DOM Element detected
-    isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
+      isShadowRoot(element) ? element.host : null) || // ShadowRoot detected
     // $FlowFixMe[incompatible-call]: HTMLElement is a Node
     getDocumentElement(element) // fallback
 
@@ -2647,7 +2647,7 @@ function getParentNode(element) {
 
 function getTrueOffsetParent(element) {
   if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
-  getComputedStyle$1(element).position === 'fixed') {
+    getComputedStyle$1(element).position === 'fixed') {
     return null;
   }
 
@@ -2750,8 +2750,8 @@ function arrow(_ref) {
   var _state$modifiersData$;
 
   var state = _ref.state,
-      name = _ref.name,
-      options = _ref.options;
+    name = _ref.name,
+    options = _ref.options;
   var arrowElement = state.elements.arrow;
   var popperOffsets = state.modifiersData.popperOffsets;
   var basePlacement = getBasePlacement$1(state.placement);
@@ -2785,9 +2785,9 @@ function arrow(_ref) {
 
 function effect$1(_ref2) {
   var state = _ref2.state,
-      options = _ref2.options;
+    options = _ref2.options;
   var _options$element = options.element,
-      arrowElement = _options$element === void 0 ? '[data-popper-arrow]' : _options$element;
+    arrowElement = _options$element === void 0 ? '[data-popper-arrow]' : _options$element;
 
   if (arrowElement == null) {
     return;
@@ -2835,7 +2835,7 @@ var unsetSides = {
 
 function roundOffsetsByDPR(_ref, win) {
   var x = _ref.x,
-      y = _ref.y;
+    y = _ref.y;
   var dpr = win.devicePixelRatio || 1;
   return {
     x: round(x * dpr) / dpr || 0,
@@ -2847,19 +2847,19 @@ function mapToStyles(_ref2) {
   var _Object$assign2;
 
   var popper = _ref2.popper,
-      popperRect = _ref2.popperRect,
-      placement = _ref2.placement,
-      variation = _ref2.variation,
-      offsets = _ref2.offsets,
-      position = _ref2.position,
-      gpuAcceleration = _ref2.gpuAcceleration,
-      adaptive = _ref2.adaptive,
-      roundOffsets = _ref2.roundOffsets,
-      isFixed = _ref2.isFixed;
+    popperRect = _ref2.popperRect,
+    placement = _ref2.placement,
+    variation = _ref2.variation,
+    offsets = _ref2.offsets,
+    position = _ref2.position,
+    gpuAcceleration = _ref2.gpuAcceleration,
+    adaptive = _ref2.adaptive,
+    roundOffsets = _ref2.roundOffsets,
+    isFixed = _ref2.isFixed;
   var _offsets$x = offsets.x,
-      x = _offsets$x === void 0 ? 0 : _offsets$x,
-      _offsets$y = offsets.y,
-      y = _offsets$y === void 0 ? 0 : _offsets$y;
+    x = _offsets$x === void 0 ? 0 : _offsets$x,
+    _offsets$y = offsets.y,
+    y = _offsets$y === void 0 ? 0 : _offsets$y;
 
   var _ref3 = typeof roundOffsets === 'function' ? roundOffsets({
     x: x,
@@ -2897,7 +2897,7 @@ function mapToStyles(_ref2) {
     if (placement === top || (placement === left || placement === right) && variation === end) {
       sideY = bottom;
       var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : // $FlowFixMe[prop-missing]
-      offsetParent[heightProp];
+        offsetParent[heightProp];
       y -= offsetY - popperRect.height;
       y *= gpuAcceleration ? 1 : -1;
     }
@@ -2905,7 +2905,7 @@ function mapToStyles(_ref2) {
     if (placement === left || (placement === top || placement === bottom) && variation === end) {
       sideX = right;
       var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : // $FlowFixMe[prop-missing]
-      offsetParent[widthProp];
+        offsetParent[widthProp];
       x -= offsetX - popperRect.width;
       x *= gpuAcceleration ? 1 : -1;
     }
@@ -2937,13 +2937,13 @@ function mapToStyles(_ref2) {
 
 function computeStyles(_ref5) {
   var state = _ref5.state,
-      options = _ref5.options;
+    options = _ref5.options;
   var _options$gpuAccelerat = options.gpuAcceleration,
-      gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat,
-      _options$adaptive = options.adaptive,
-      adaptive = _options$adaptive === void 0 ? true : _options$adaptive,
-      _options$roundOffsets = options.roundOffsets,
-      roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+    gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat,
+    _options$adaptive = options.adaptive,
+    adaptive = _options$adaptive === void 0 ? true : _options$adaptive,
+    _options$roundOffsets = options.roundOffsets,
+    roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
   var commonStyles = {
     placement: getBasePlacement$1(state.placement),
     variation: getVariation(state.placement),
@@ -2991,12 +2991,12 @@ var passive = {
 
 function effect(_ref) {
   var state = _ref.state,
-      instance = _ref.instance,
-      options = _ref.options;
+    instance = _ref.instance,
+    options = _ref.options;
   var _options$scroll = options.scroll,
-      scroll = _options$scroll === void 0 ? true : _options$scroll,
-      _options$resize = options.resize,
-      resize = _options$resize === void 0 ? true : _options$resize;
+    scroll = _options$scroll === void 0 ? true : _options$scroll,
+    _options$resize = options.resize,
+    resize = _options$resize === void 0 ? true : _options$resize;
   var window = getWindow(state.elements.popper);
   var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
 
@@ -3028,7 +3028,7 @@ var eventListeners = {
   name: 'eventListeners',
   enabled: true,
   phase: 'write',
-  fn: function fn() {},
+  fn: function fn() { },
   effect: effect,
   data: {}
 };
@@ -3132,9 +3132,9 @@ function getDocumentRect(element) {
 function isScrollParent(element) {
   // Firefox wants us to check `-x` and `-y` variations as well
   var _getComputedStyle = getComputedStyle$1(element),
-      overflow = _getComputedStyle.overflow,
-      overflowX = _getComputedStyle.overflowX,
-      overflowY = _getComputedStyle.overflowY;
+    overflow = _getComputedStyle.overflow,
+    overflowX = _getComputedStyle.overflowX,
+    overflowY = _getComputedStyle.overflowY;
 
   return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }
@@ -3172,7 +3172,7 @@ function listScrollParents(element, list) {
   var target = isBody ? [win].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
   var updatedList = list.concat(target);
   return isBody ? updatedList : // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
-  updatedList.concat(listScrollParents(getParentNode(target)));
+    updatedList.concat(listScrollParents(getParentNode(target)));
 }
 
 function rectToClientRect(rect) {
@@ -3242,8 +3242,8 @@ function getClippingRect(element, boundary, rootBoundary, strategy) {
 
 function computeOffsets(_ref) {
   var reference = _ref.reference,
-      element = _ref.element,
-      placement = _ref.placement;
+    element = _ref.element,
+    placement = _ref.placement;
   var basePlacement = placement ? getBasePlacement$1(placement) : null;
   var variation = placement ? getVariation(placement) : null;
   var commonX = reference.x + reference.width / 2 - element.width / 2;
@@ -3311,20 +3311,20 @@ function detectOverflow$1(state, options) {
   }
 
   var _options = options,
-      _options$placement = _options.placement,
-      placement = _options$placement === void 0 ? state.placement : _options$placement,
-      _options$strategy = _options.strategy,
-      strategy = _options$strategy === void 0 ? state.strategy : _options$strategy,
-      _options$boundary = _options.boundary,
-      boundary = _options$boundary === void 0 ? clippingParents : _options$boundary,
-      _options$rootBoundary = _options.rootBoundary,
-      rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary,
-      _options$elementConte = _options.elementContext,
-      elementContext = _options$elementConte === void 0 ? popper : _options$elementConte,
-      _options$altBoundary = _options.altBoundary,
-      altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary,
-      _options$padding = _options.padding,
-      padding = _options$padding === void 0 ? 0 : _options$padding;
+    _options$placement = _options.placement,
+    placement = _options$placement === void 0 ? state.placement : _options$placement,
+    _options$strategy = _options.strategy,
+    strategy = _options$strategy === void 0 ? state.strategy : _options$strategy,
+    _options$boundary = _options.boundary,
+    boundary = _options$boundary === void 0 ? clippingParents : _options$boundary,
+    _options$rootBoundary = _options.rootBoundary,
+    rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary,
+    _options$elementConte = _options.elementContext,
+    elementContext = _options$elementConte === void 0 ? popper : _options$elementConte,
+    _options$altBoundary = _options.altBoundary,
+    altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary,
+    _options$padding = _options.padding,
+    padding = _options$padding === void 0 ? 0 : _options$padding;
   var paddingObject = mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements));
   var altContext = elementContext === popper ? reference : popper;
   var popperRect = state.rects.popper;
@@ -3367,13 +3367,13 @@ function computeAutoPlacement(state, options) {
   }
 
   var _options = options,
-      placement = _options.placement,
-      boundary = _options.boundary,
-      rootBoundary = _options.rootBoundary,
-      padding = _options.padding,
-      flipVariations = _options.flipVariations,
-      _options$allowedAutoP = _options.allowedAutoPlacements,
-      allowedAutoPlacements = _options$allowedAutoP === void 0 ? placements : _options$allowedAutoP;
+    placement = _options.placement,
+    boundary = _options.boundary,
+    rootBoundary = _options.rootBoundary,
+    padding = _options.padding,
+    flipVariations = _options.flipVariations,
+    _options$allowedAutoP = _options.allowedAutoPlacements,
+    allowedAutoPlacements = _options$allowedAutoP === void 0 ? placements : _options$allowedAutoP;
   var variation = getVariation(placement);
   var placements$1 = variation ? flipVariations ? variationPlacements : variationPlacements.filter(function (placement) {
     return getVariation(placement) === variation;
@@ -3412,25 +3412,25 @@ function getExpandedFallbackPlacements(placement) {
 
 function flip(_ref) {
   var state = _ref.state,
-      options = _ref.options,
-      name = _ref.name;
+    options = _ref.options,
+    name = _ref.name;
 
   if (state.modifiersData[name]._skip) {
     return;
   }
 
   var _options$mainAxis = options.mainAxis,
-      checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
-      _options$altAxis = options.altAxis,
-      checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis,
-      specifiedFallbackPlacements = options.fallbackPlacements,
-      padding = options.padding,
-      boundary = options.boundary,
-      rootBoundary = options.rootBoundary,
-      altBoundary = options.altBoundary,
-      _options$flipVariatio = options.flipVariations,
-      flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio,
-      allowedAutoPlacements = options.allowedAutoPlacements;
+    checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
+    _options$altAxis = options.altAxis,
+    checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis,
+    specifiedFallbackPlacements = options.fallbackPlacements,
+    padding = options.padding,
+    boundary = options.boundary,
+    rootBoundary = options.rootBoundary,
+    altBoundary = options.altBoundary,
+    _options$flipVariatio = options.flipVariations,
+    flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio,
+    allowedAutoPlacements = options.allowedAutoPlacements;
   var preferredPlacement = state.options.placement;
   var basePlacement = getBasePlacement$1(preferredPlacement);
   var isBasePlacement = basePlacement === preferredPlacement;
@@ -3565,7 +3565,7 @@ function isAnySideFullyClipped(overflow) {
 
 function hide(_ref) {
   var state = _ref.state,
-      name = _ref.name;
+    name = _ref.name;
   var referenceRect = state.rects.reference;
   var popperRect = state.rects.popper;
   var preventedOffsets = state.modifiersData.preventOverflow;
@@ -3607,8 +3607,8 @@ function distanceAndSkiddingToXY(placement, rects, offset) {
   var _ref = typeof offset === 'function' ? offset(Object.assign({}, rects, {
     placement: placement
   })) : offset,
-      skidding = _ref[0],
-      distance = _ref[1];
+    skidding = _ref[0],
+    distance = _ref[1];
 
   skidding = skidding || 0;
   distance = (distance || 0) * invertDistance;
@@ -3623,17 +3623,17 @@ function distanceAndSkiddingToXY(placement, rects, offset) {
 
 function offset(_ref2) {
   var state = _ref2.state,
-      options = _ref2.options,
-      name = _ref2.name;
+    options = _ref2.options,
+    name = _ref2.name;
   var _options$offset = options.offset,
-      offset = _options$offset === void 0 ? [0, 0] : _options$offset;
+    offset = _options$offset === void 0 ? [0, 0] : _options$offset;
   var data = placements.reduce(function (acc, placement) {
     acc[placement] = distanceAndSkiddingToXY(placement, state.rects, offset);
     return acc;
   }, {});
   var _data$state$placement = data[state.placement],
-      x = _data$state$placement.x,
-      y = _data$state$placement.y;
+    x = _data$state$placement.x,
+    y = _data$state$placement.y;
 
   if (state.modifiersData.popperOffsets != null) {
     state.modifiersData.popperOffsets.x += x;
@@ -3654,7 +3654,7 @@ var offset$1 = {
 
 function popperOffsets(_ref) {
   var state = _ref.state,
-      name = _ref.name;
+    name = _ref.name;
   // Offsets are the actual position the popper needs to have to be
   // properly positioned near its reference element
   // This is the most basic placement, and will be adjusted by
@@ -3682,20 +3682,20 @@ function getAltAxis(axis) {
 
 function preventOverflow(_ref) {
   var state = _ref.state,
-      options = _ref.options,
-      name = _ref.name;
+    options = _ref.options,
+    name = _ref.name;
   var _options$mainAxis = options.mainAxis,
-      checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
-      _options$altAxis = options.altAxis,
-      checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis,
-      boundary = options.boundary,
-      rootBoundary = options.rootBoundary,
-      altBoundary = options.altBoundary,
-      padding = options.padding,
-      _options$tether = options.tether,
-      tether = _options$tether === void 0 ? true : _options$tether,
-      _options$tetherOffset = options.tetherOffset,
-      tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
+    checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
+    _options$altAxis = options.altAxis,
+    checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis,
+    boundary = options.boundary,
+    rootBoundary = options.rootBoundary,
+    altBoundary = options.altBoundary,
+    padding = options.padding,
+    _options$tether = options.tether,
+    tether = _options$tether === void 0 ? true : _options$tether,
+    _options$tetherOffset = options.tetherOffset,
+    tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
   var overflow = detectOverflow$1(state, {
     boundary: boundary,
     rootBoundary: rootBoundary,
@@ -3855,7 +3855,7 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
 
   if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
     if (getNodeName(offsetParent) !== 'body' || // https://github.com/popperjs/popper-core/issues/1078
-    isScrollParent(documentElement)) {
+      isScrollParent(documentElement)) {
       scroll = getNodeScroll(offsetParent);
     }
 
@@ -3972,10 +3972,10 @@ function popperGenerator(generatorOptions) {
   }
 
   var _generatorOptions = generatorOptions,
-      _generatorOptions$def = _generatorOptions.defaultModifiers,
-      defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def,
-      _generatorOptions$def2 = _generatorOptions.defaultOptions,
-      defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
+    _generatorOptions$def = _generatorOptions.defaultModifiers,
+    defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def,
+    _generatorOptions$def2 = _generatorOptions.defaultOptions,
+    defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
   return function createPopper(reference, popper, options) {
     if (options === void 0) {
       options = defaultOptions;
@@ -4026,8 +4026,8 @@ function popperGenerator(generatorOptions) {
         }
 
         var _state$elements = state.elements,
-            reference = _state$elements.reference,
-            popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
+          reference = _state$elements.reference,
+          popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
         // anymore
 
         if (!areValidElements(reference, popper)) {
@@ -4062,10 +4062,10 @@ function popperGenerator(generatorOptions) {
           }
 
           var _state$orderedModifie = state.orderedModifiers[index],
-              fn = _state$orderedModifie.fn,
-              _state$orderedModifie2 = _state$orderedModifie.options,
-              _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2,
-              name = _state$orderedModifie.name;
+            fn = _state$orderedModifie.fn,
+            _state$orderedModifie2 = _state$orderedModifie.options,
+            _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2,
+            name = _state$orderedModifie.name;
 
           if (typeof fn === 'function') {
             state = fn({
@@ -4108,9 +4108,9 @@ function popperGenerator(generatorOptions) {
     function runModifierEffects() {
       state.orderedModifiers.forEach(function (_ref) {
         var name = _ref.name,
-            _ref$options = _ref.options,
-            options = _ref$options === void 0 ? {} : _ref$options,
-            effect = _ref.effect;
+          _ref$options = _ref.options,
+          options = _ref$options === void 0 ? {} : _ref$options,
+          effect = _ref.effect;
 
         if (typeof effect === 'function') {
           var cleanupFn = effect({
@@ -4120,7 +4120,7 @@ function popperGenerator(generatorOptions) {
             options: options
           });
 
-          var noopFn = function noopFn() {};
+          var noopFn = function noopFn() { };
 
           effectCleanupFns.push(cleanupFn || noopFn);
         }
@@ -4271,18 +4271,18 @@ function getOwnerDocument(elementOrElements) {
   var _element$ownerDocumen;
 
   var _normalizeToArray = normalizeToArray(elementOrElements),
-      element = _normalizeToArray[0]; // Elements created via a <template> have an ownerDocument with no reference to the body
+    element = _normalizeToArray[0]; // Elements created via a <template> have an ownerDocument with no reference to the body
 
 
   return element != null && (_element$ownerDocumen = element.ownerDocument) != null && _element$ownerDocumen.body ? element.ownerDocument : document;
 }
 function isCursorOutsideInteractiveBorder(popperTreeData, event) {
   var clientX = event.clientX,
-      clientY = event.clientY;
+    clientY = event.clientY;
   return popperTreeData.every(function (_ref) {
     var popperRect = _ref.popperRect,
-        popperState = _ref.popperState,
-        props = _ref.props;
+      popperState = _ref.popperState,
+      props = _ref.props;
     var interactiveBorder = props.interactiveBorder;
     var basePlacement = getBasePlacement(popperState.placement);
     var offsetData = popperState.modifiersData.offset;
@@ -4394,7 +4394,7 @@ function bindGlobalEventListeners() {
 
 var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 var isIE11 = isBrowser ? // @ts-ignore
-!!window.msCrypto : false;
+  !!window.msCrypto : false;
 
 var pluginProps = {
   animateFill: false,
@@ -4429,18 +4429,18 @@ var defaultProps = Object.assign({
   interactiveDebounce: 0,
   moveTransition: '',
   offset: [0, 10],
-  onAfterUpdate: function onAfterUpdate() {},
-  onBeforeUpdate: function onBeforeUpdate() {},
-  onCreate: function onCreate() {},
-  onDestroy: function onDestroy() {},
-  onHidden: function onHidden() {},
-  onHide: function onHide() {},
-  onMount: function onMount() {},
-  onShow: function onShow() {},
-  onShown: function onShown() {},
-  onTrigger: function onTrigger() {},
-  onUntrigger: function onUntrigger() {},
-  onClickOutside: function onClickOutside() {},
+  onAfterUpdate: function onAfterUpdate() { },
+  onBeforeUpdate: function onBeforeUpdate() { },
+  onCreate: function onCreate() { },
+  onDestroy: function onDestroy() { },
+  onHidden: function onHidden() { },
+  onHide: function onHide() { },
+  onMount: function onMount() { },
+  onShow: function onShow() { },
+  onShown: function onShown() { },
+  onTrigger: function onTrigger() { },
+  onUntrigger: function onUntrigger() { },
+  onClickOutside: function onClickOutside() { },
   placement: 'top',
   plugins: [],
   popperOptions: {},
@@ -4462,7 +4462,7 @@ function getExtendedPassedProps(passedProps) {
   var plugins = passedProps.plugins || [];
   var pluginProps = plugins.reduce(function (acc, plugin) {
     var name = plugin.name,
-        defaultValue = plugin.defaultValue;
+      defaultValue = plugin.defaultValue;
 
     if (name) {
       var _name;
@@ -4581,9 +4581,9 @@ function render(instance) {
 
   function onUpdate(prevProps, nextProps) {
     var _getChildren = getChildren(popper),
-        box = _getChildren.box,
-        content = _getChildren.content,
-        arrow = _getChildren.arrow;
+      box = _getChildren.box,
+      content = _getChildren.content,
+      arrow = _getChildren.arrow;
 
     if (nextProps.theme) {
       box.setAttribute('data-theme', nextProps.theme);
@@ -4710,8 +4710,8 @@ function createTippy(reference, passedProps) {
 
 
   var _props$render = props.render(instance),
-      popper = _props$render.popper,
-      onUpdate = _props$render.onUpdate;
+    popper = _props$render.popper,
+    onUpdate = _props$render.onUpdate;
 
   popper.setAttribute('data-tippy-root', '');
   popper.id = "tippy-" + instance.id;
@@ -5021,9 +5021,9 @@ function createTippy(reference, passedProps) {
   function removeListeners() {
     listeners.forEach(function (_ref) {
       var node = _ref.node,
-          eventType = _ref.eventType,
-          handler = _ref.handler,
-          options = _ref.options;
+        eventType = _ref.eventType,
+        handler = _ref.handler,
+        options = _ref.options;
       node.removeEventListener(eventType, handler, options);
     });
     listeners = [];
@@ -5135,11 +5135,11 @@ function createTippy(reference, passedProps) {
   function createPopperInstance() {
     destroyPopperInstance();
     var _instance$props2 = instance.props,
-        popperOptions = _instance$props2.popperOptions,
-        placement = _instance$props2.placement,
-        offset = _instance$props2.offset,
-        getReferenceClientRect = _instance$props2.getReferenceClientRect,
-        moveTransition = _instance$props2.moveTransition;
+      popperOptions = _instance$props2.popperOptions,
+      placement = _instance$props2.placement,
+      offset = _instance$props2.offset,
+      getReferenceClientRect = _instance$props2.getReferenceClientRect,
+      moveTransition = _instance$props2.moveTransition;
     var arrow = getIsDefaultRenderFn() ? getChildren(popper).arrow : null;
     var computedReference = getReferenceClientRect ? {
       getBoundingClientRect: getReferenceClientRect,
@@ -5155,7 +5155,7 @@ function createTippy(reference, passedProps) {
 
         if (getIsDefaultRenderFn()) {
           var _getDefaultTemplateCh = getDefaultTemplateChildren(),
-              box = _getDefaultTemplateCh.box;
+            box = _getDefaultTemplateCh.box;
 
           ['placement', 'reference-hidden', 'escaped'].forEach(function (attr) {
             if (attr === 'placement') {
@@ -5265,8 +5265,8 @@ function createTippy(reference, passedProps) {
     var delay = getDelay(true);
 
     var _getNormalizedTouchSe = getNormalizedTouchSettings(),
-        touchValue = _getNormalizedTouchSe[0],
-        touchDelay = _getNormalizedTouchSe[1];
+      touchValue = _getNormalizedTouchSe[0],
+      touchDelay = _getNormalizedTouchSe[1];
 
     if (currentInput.isTouch && touchValue === 'hold' && touchDelay) {
       delay = touchDelay;
@@ -5436,8 +5436,8 @@ function createTippy(reference, passedProps) {
 
     if (getIsDefaultRenderFn()) {
       var _getDefaultTemplateCh2 = getDefaultTemplateChildren(),
-          box = _getDefaultTemplateCh2.box,
-          content = _getDefaultTemplateCh2.content;
+        box = _getDefaultTemplateCh2.box,
+        content = _getDefaultTemplateCh2.content;
 
       setTransitionDuration([box, content], 0);
     }
@@ -5456,8 +5456,8 @@ function createTippy(reference, passedProps) {
 
       if (getIsDefaultRenderFn() && instance.props.animation) {
         var _getDefaultTemplateCh3 = getDefaultTemplateChildren(),
-            _box = _getDefaultTemplateCh3.box,
-            _content = _getDefaultTemplateCh3.content;
+          _box = _getDefaultTemplateCh3.box,
+          _content = _getDefaultTemplateCh3.content;
 
         setTransitionDuration([_box, _content], duration);
         setVisibilityState([_box, _content], 'visible');
@@ -5515,8 +5515,8 @@ function createTippy(reference, passedProps) {
 
     if (getIsDefaultRenderFn()) {
       var _getDefaultTemplateCh4 = getDefaultTemplateChildren(),
-          box = _getDefaultTemplateCh4.box,
-          content = _getDefaultTemplateCh4.content;
+        box = _getDefaultTemplateCh4.box,
+        content = _getDefaultTemplateCh4.content;
 
       if (instance.props.animation) {
         setTransitionDuration([box, content], duration);
@@ -6192,7 +6192,7 @@ function checkImages(results) {
       const src = $el.getAttribute('src');
       const baseSrc = (!src) ? $el.getAttribute('srcset') : src;
 
-      if ($el.closest('a[href]') && $el.closest('a[href]').getAttribute('tabindex') === '-1' && $el.closest('a[href]').getAttribute('aria-hidden') === 'true') ; else if (error[0] !== null && $el.closest('a[href]')) {
+      if ($el.closest('a[href]') && $el.closest('a[href]').getAttribute('tabindex') === '-1' && $el.closest('a[href]').getAttribute('aria-hidden') === 'true'); else if (error[0] !== null && $el.closest('a[href]')) {
         // Image fails if a stop word was found.
         results.push({
           element: $el,
@@ -6246,7 +6246,7 @@ function checkImages(results) {
           dismiss: key,
         });
       } else if ((alt === '' || alt === ' ') && $el.closest('a[href]')) {
-        if ($el.closest('a[href]').getAttribute('tabindex') === '-1' && $el.closest('a[href]').getAttribute('aria-hidden') === 'true') ; else if ($el.closest('a[href]').getAttribute('aria-hidden') === 'true') {
+        if ($el.closest('a[href]').getAttribute('tabindex') === '-1' && $el.closest('a[href]').getAttribute('aria-hidden') === 'true'); else if ($el.closest('a[href]').getAttribute('aria-hidden') === 'true') {
           results.push({
             element: $el,
             type: 'error',
@@ -6647,9 +6647,9 @@ function checkLinkText(results, showGoodLinkButton, linksToDOI) {
     const matches = linkText.match(htmlSymbols);
     const matchedSymbol = matches ? matches[1] : null;
 
-    if ($el.querySelectorAll('img').length) ; else if (href && !linkText) {
+    if ($el.querySelectorAll('img').length); else if (href && !linkText) {
       // Flag empty hyperlinks.
-      if ($el && hasTitle) ; else if ($el.children.length) {
+      if ($el && hasTitle); else if ($el.children.length) {
         // Has child elements (e.g. SVG or SPAN) <a><i></i></a>
         results.push({
           element: $el,
@@ -6681,7 +6681,7 @@ function checkLinkText(results, showGoodLinkButton, linksToDOI) {
             position: 'afterend',
           });
         }
-      } else if ($el.getAttribute('aria-hidden') === 'true' && $el.getAttribute('tabindex') === '-1') ; else {
+      } else if ($el.getAttribute('aria-hidden') === 'true' && $el.getAttribute('tabindex') === '-1'); else {
         results.push({
           element: $el,
           type: 'error',
@@ -6883,7 +6883,7 @@ function checkContrast(results, option) {
               let error;
               let warning;
 
-              if ((width === 1 && height === 1) && (clip === "rect(0,0,0,0)" || clip === "rect(1px,1px,1px,1px)")) ; else if (htmlTag === 'SVG') {
+              if ((width === 1 && height === 1) && (clip === "rect(0,0,0,0)" || clip === "rect(1px,1px,1px,1px)")); else if (htmlTag === 'SVG') {
                 ratio = Math.round(contrastObject.contrastRatio(fill, background) * 100) / 100;
                 if (ratio < 3) {
                   error = {
@@ -6894,7 +6894,7 @@ function checkContrast(results, option) {
                 }
               } else if (text.length || htmlTag === 'INPUT' || htmlTag === 'SELECT' || htmlTag === 'TEXTAREA') {
                 const type = elem.getAttribute('type');
-                if (type === 'range' || type === 'color') ; else if (background === 'image') {
+                if (type === 'range' || type === 'color'); else if (background === 'image') {
                   warning = {
                     elem,
                   };
@@ -6994,11 +6994,11 @@ function checkLabels(results, option) {
           const tabindex = $el.getAttribute('tabindex');
 
           // If button type is submit or button: pass
-          if (type === 'submit' || type === 'button' || type === 'hidden' || tabindex === '-1') ; else if (type === 'image') {
+          if (type === 'submit' || type === 'button' || type === 'hidden' || tabindex === '-1'); else if (type === 'image') {
             // Inputs where type="image".
             const imgalt = $el.getAttribute('alt');
             if (!imgalt || imgalt === ' ') {
-              if ($el.getAttribute('aria-label')) ; else {
+              if ($el.getAttribute('aria-label')); else {
                 results.push({
                   element: $el,
                   type: 'error',
@@ -7045,7 +7045,7 @@ function checkLabels(results, option) {
                 dismiss: key,
               });
             }
-          } else if ($el.closest('label') && $el.closest('label').textContent.trim()) ; else if ($el.getAttribute('id')) {
+          } else if ($el.closest('label') && $el.closest('label').textContent.trim()); else if ($el.getAttribute('id')) {
             // Has an ID but doesn't have a matching FOR attribute.
             let hasFor = false;
 
@@ -7120,7 +7120,7 @@ function checkLinksAdvanced(results, option) {
 
         if (linkText.length !== 0) {
           if (seen[linkTextTrimmed] && linkTextTrimmed.length !== 0) {
-            if (seen[href]) ; else {
+            if (seen[href]); else {
               const key = prepareDismissal(`LINK${linkTextTrimmed + href}`);
               const sanitizedText = sanitizeHTML(linkText);
               results.push({
@@ -7437,7 +7437,7 @@ function checkEmbeddedContent(results, option) {
     if (option.embeddedContentVideo === true) {
       Elements.Found.Videos.forEach(($el) => {
         const track = $el.getElementsByTagName('TRACK');
-        if ($el.tagName === 'VIDEO' && track.length) ; else {
+        if ($el.tagName === 'VIDEO' && track.length); else {
           const key = prepareDismissal(`IFRAME${$el.getAttribute('src') !== 'undefined' ? $el.getAttribute('src') : $el.querySelector('[src]').getAttribute('src')}`);
           results.push({
             element: $el,
@@ -7474,23 +7474,23 @@ function checkEmbeddedContent(results, option) {
           || $el.getAttribute('aria-hidden') === 'true'
           || $el.getAttribute('hidden') !== null
           || $el.style.display === 'none'
-          || $el.getAttribute('role') === 'presentation') ; else if ($el.getAttribute('title') === null || $el.getAttribute('title') === '') {
-          if ($el.getAttribute('aria-label') === null || $el.getAttribute('aria-label') === '') {
-            if ($el.getAttribute('aria-labelledby') === null) {
-              // TO-DO: Make sure red error border takes precedence
-              if ($el.classList.contains('sa11y-warning-border')) {
-                $el.classList.remove('sa11y-warning-border');
+          || $el.getAttribute('role') === 'presentation'); else if ($el.getAttribute('title') === null || $el.getAttribute('title') === '') {
+            if ($el.getAttribute('aria-label') === null || $el.getAttribute('aria-label') === '') {
+              if ($el.getAttribute('aria-labelledby') === null) {
+                // TO-DO: Make sure red error border takes precedence
+                if ($el.classList.contains('sa11y-warning-border')) {
+                  $el.classList.remove('sa11y-warning-border');
+                }
+                results.push({
+                  element: $el,
+                  type: 'error',
+                  content: Lang.sprintf('EMBED_MISSING_TITLE'),
+                  inline: false,
+                  position: 'beforebegin',
+                });
               }
-              results.push({
-                element: $el,
-                type: 'error',
-                content: Lang.sprintf('EMBED_MISSING_TITLE'),
-                inline: false,
-                position: 'beforebegin',
-              });
             }
-          }
-        } else ;
+          } else;
       });
     }
 
@@ -7503,7 +7503,7 @@ function checkEmbeddedContent(results, option) {
           || $el.getAttribute('hidden') !== null
           || $el.style.display === 'none'
           || $el.getAttribute('role') === 'presentation'
-          || $el.getAttribute('tabindex') === '-1') ; else {
+          || $el.getAttribute('tabindex') === '-1'); else {
           const key = prepareDismissal(`IFRAME${$el.getAttribute('src') !== 'undefined' ? $el.getAttribute('src') : $el.querySelector('[src]').getAttribute('src')}`);
           results.push({
             element: $el,
@@ -7712,7 +7712,7 @@ function checkQA(results, option) {
         boldtext = getTexted;
         const prevSibling = $el.previousElementSibling;
         const maybeSentence = boldtext.match(/[.;?!"]/) !== null;
-        if (prevSibling !== null && prevSibling.matches(ignoreElements)) ; else if (
+        if (prevSibling !== null && prevSibling.matches(ignoreElements)); else if (
           !/[*]$/.test(boldtext)
           && (boldtext.length >= 4 && boldtext.length <= 120)
           && !$el.closest(ignoreParents)
@@ -7739,7 +7739,7 @@ function checkQA(results, option) {
         const prevSibling = $elem.previousElementSibling;
         const maybeSentence = getText$1.match(/[.;?!"]/) !== null;
 
-        if (prevSibling !== null && prevSibling.matches(ignore)) ; else if (
+        if (prevSibling !== null && prevSibling.matches(ignore)); else if (
           size >= 24
           && !$elem.closest(ignore)
           && (getText$1.length >= 4 && getText$1.length <= 120)
@@ -8028,19 +8028,22 @@ class Sa11y {
 
       if (!checkRunPrevent()) {
         // Register web components
-        customElements.define('sa11y-heading-label', HeadingLabel);
-        customElements.define('sa11y-heading-anchor', HeadingAnchor);
-        customElements.define('sa11y-annotation', Annotations);
-        customElements.define('sa11y-tooltips', TooltipComponent);
-        customElements.define('sa11y-dismiss-tooltip', DismissTooltip);
-        customElements.define('sa11y-control-panel', ControlPanel);
-        customElements.define('sa11y-console-error', ConsoleErrors);
 
-        // Initialize global constants and exclusions.
-        Constants.initializeGlobal(option);
-        Constants.initializeReadability(option);
-        Constants.initializeExclusions(option);
-        Constants.initializeEmbeddedContent(option);
+        if (!option.headless) {
+          customElements.define('sa11y-heading-label', HeadingLabel);
+          customElements.define('sa11y-heading-anchor', HeadingAnchor);
+          customElements.define('sa11y-annotation', Annotations);
+          customElements.define('sa11y-tooltips', TooltipComponent);
+          customElements.define('sa11y-dismiss-tooltip', DismissTooltip);
+          customElements.define('sa11y-control-panel', ControlPanel);
+          customElements.define('sa11y-console-error', ConsoleErrors);
+
+          // Initialize global constants and exclusions.
+          Constants.initializeGlobal(option);
+          Constants.initializeReadability(option);
+          Constants.initializeExclusions(option);
+          Constants.initializeEmbeddedContent(option);
+        }
 
         // Once document has fully loaded.
         documentLoadingCheck(() => {
@@ -8149,70 +8152,68 @@ class Sa11y {
           });
         }
 
-        if (option.headless === false) {
-          // Check for dismissed items and update results array.
-          const dismiss = dismissAnnotationsLogic(this.results, this.dismissTooltip);
-          this.results = dismiss.updatedResults;
-          this.dismissed = dismiss.dismissedIssues;
-          this.dismissedCount = dismiss.dismissCount;
+        // Check for dismissed items and update results array.
+        const dismiss = dismissAnnotationsLogic(this.results, this.dismissTooltip);
+        this.results = dismiss.updatedResults;
+        this.dismissed = dismiss.dismissedIssues;
+        this.dismissedCount = dismiss.dismissCount;
 
-          // Update count.
-          const count = updateCount(this.results, this.errorCount, this.warningCount);
-          this.errorCount = count.error;
-          this.warningCount = count.warning;
+        // Update count.
+        const count = updateCount(this.results, this.errorCount, this.warningCount);
+        this.errorCount = count.error;
+        this.warningCount = count.warning;
 
-          // Update badge.
-          updateBadge(this.errorCount, this.warningCount);
+        // Update badge.
+        updateBadge(this.errorCount, this.warningCount);
 
-          /* If panel is OPENED. */
-          if (store.getItem('sa11y-remember-panel') === 'Opened') {
-            // Paint the page with annotations.
-            this.results.forEach(($el, i) => {
-              Object.assign($el, { id: i });
-              annotate(
-                $el.element,
-                $el.type,
-                $el.content,
-                $el.inline,
-                $el.position,
-                $el.id,
-                option.dismissAnnotations,
-              );
-            });
-
-            // After annotations are painted, find & cache.
-            Elements.initializeAnnotations();
-
-            // Initialize tooltips
-            const tooltipComponent = new TooltipComponent();
-            document.body.appendChild(tooltipComponent);
-
-            dismissAnnotationsButtons(
+        /* If panel is OPENED. */
+        if (store.getItem('sa11y-remember-panel') === 'Opened') {
+          // Paint the page with annotations.
+          this.results.forEach(($el, i) => {
+            Object.assign($el, { id: i });
+            annotate(
+              $el.element,
+              $el.type,
+              $el.content,
+              $el.inline,
+              $el.position,
+              $el.id,
               option.dismissAnnotations,
-              this.results,
-              this.dismissed,
-              this.checkAll,
-              this.resetAll,
             );
+          });
 
-            generatePageOutline(
-              this.dismissed,
-              this.headingOutline,
-            );
+          // After annotations are painted, find & cache.
+          Elements.initializeAnnotations();
 
-            updatePanel(
-              this.dismissedCount,
-              this.errorCount,
-              this.warningCount,
-            );
+          // Initialize tooltips
+          const tooltipComponent = new TooltipComponent();
+          document.body.appendChild(tooltipComponent);
 
-            // Initialize Skip to Issue button.
-            skipToIssue();
+          dismissAnnotationsButtons(
+            option.dismissAnnotations,
+            this.results,
+            this.dismissed,
+            this.checkAll,
+            this.resetAll,
+          );
 
-            // Extras
-            detectOverflow();
-            nudge();
-          }
+          generatePageOutline(
+            this.dismissed,
+            this.headingOutline,
+          );
+
+          updatePanel(
+            this.dismissedCount,
+            this.errorCount,
+            this.warningCount,
+          );
+
+          // Initialize Skip to Issue button.
+          skipToIssue();
+
+          // Extras
+          detectOverflow();
+          nudge();
         }
 
         // Dispatch custom event that stores the results array.
