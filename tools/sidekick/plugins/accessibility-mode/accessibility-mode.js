@@ -1,5 +1,5 @@
 /* eslint-disable no-undef, no-unused-vars */
-import { Sa11y, Lang } from './lib/sa11y.js';
+import { Sa11y, Lang } from './lib/sa11y.min.js';
 import Sa11yLangEn from './lib/sa11y.lang.en.js';
 import { loadCSS } from '../../../../scripts/aem.js';
 import { createElement } from '../../../../scripts/scripts.js'; // eslint-disable-line import/no-cycle
@@ -56,7 +56,7 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
       });
     }
 
-    await loadCSS(`${window.hlx.codeBasePath}/tools/sidekick/plugins/accessibility-mode/lib/sa11y.css`);
+    await loadCSS(`${window.hlx.codeBasePath}/tools/sidekick/plugins/accessibility-mode/lib/sa11y.min.css`);
     Lang.addI18n(Sa11yLangEn.strings);
     const isAlreadyInitialized = initializedCounter > 0;
 
@@ -74,7 +74,9 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
       customChecks,
     });
 
-    initializedCounter += 1;
+    if (initializedCounter === 0) {
+      initializedCounter += 1;
+    }
 
     if (isAlreadyInitialized) {
       html.setAttribute('data-sa11y-active', 'true');
