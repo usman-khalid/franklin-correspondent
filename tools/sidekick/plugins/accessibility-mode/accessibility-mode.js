@@ -3,6 +3,7 @@ import { Sa11y, Lang } from './lib/sa11y.js';
 import Sa11yLangEn from './lib/sa11y.lang.en.js';
 import { loadCSS } from '../../../../scripts/aem.js';
 import { createElement } from '../../../../scripts/scripts.js'; // eslint-disable-line import/no-cycle
+import customChecks from './custom-checks/custom-checks.js';
 
 let initializedCounter = 0;
 let sa11y = null;
@@ -59,12 +60,17 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
     Lang.addI18n(Sa11yLangEn.strings);
     const isAlreadyInitialized = initializedCounter > 0;
 
+    /**
+     * NOTE: Sa11y has been extended to be able to toggle on and off via sidekick in preview mode.
+     */
     // eslint-disable-next-line no-unused-vars
     sa11y = new Sa11y({
       checkRoot: 'main',
       readabilityRoot: 'main',
       headless: isAlreadyInitialized,
       containerIgnore: '#hlx-a11y-mode-dialog',
+      headingMaxCharLength: 70,
+      customChecks,
     });
 
     initializedCounter += 1;
@@ -93,6 +99,7 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
       }
 
       sa11y.checkAll();
+      customChecks();
     }
   } else {
     html.removeAttribute('data-sa11y-theme');
