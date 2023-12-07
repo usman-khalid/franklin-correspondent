@@ -1,5 +1,10 @@
-# Franklin Accessibility Mode Sidekick Extension
-A sidekick extension that integrations with [Sa11y](https://sa11y.netlify.app/) to check the page from an accessibility perspective, and provides suggestions on things that can be improved. Custom checks can added based on the project and/or block requirements.
+# Franklin Accessibility Mode Sidekick Plugin
+
+![Alt Text](docs/a11y-mode-demo.gif)
+
+A sidekick extension that integrates with [Sa11y](https://sa11y.netlify.app/) to check the page from an accessibility perspective, and provides suggestions on things that can be improved. 
+
+Custom checks can added based on the project and/or block requirements. These can be useful to promote correct usage of blocks or adhere to style guidelines.
 
 ## Environments
 - Preview: https://main--franklin-accessibility-mode--usman-khalid.hlx.page/
