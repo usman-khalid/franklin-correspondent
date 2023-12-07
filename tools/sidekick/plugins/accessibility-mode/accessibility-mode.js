@@ -69,6 +69,7 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
       readabilityRoot: 'main',
       headless: isAlreadyInitialized,
       containerIgnore: '#hlx-a11y-mode-dialog',
+      dismissAnnotations: false,
       headingMaxCharLength: 70,
       customChecks,
     });
@@ -99,7 +100,6 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
       }
 
       sa11y.checkAll();
-      customChecks();
     }
   } else {
     html.removeAttribute('data-sa11y-theme');
@@ -120,7 +120,7 @@ const initAccessibilityMode = async (shouldActivateA11yMode) => {
       helpDialog.remove();
     }
 
-    sa11y.resetAll();
+    sa11y.resetAll(false);
   }
 };
 
