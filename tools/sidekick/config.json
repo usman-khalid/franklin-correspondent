@@ -9,6 +9,15 @@
         "dev"
       ],
       "event": "accessibility-mode"
+    },
+    {
+      "id": "visual-block-tree",
+      "title": "Visual Block Tree",
+      "environments": [
+        "preview",
+        "dev"
+      ],
+      "event": "visual-block-tree"
     }
   ]
 }

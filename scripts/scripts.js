@@ -74,6 +74,10 @@ export function createElement(tagName, props, html) {
   return elem;
 }
 
+const visualBlockTree = async(e) => {
+  console.log(e);
+};
+
 const accessibilityMode = async (e) => {
   const pluginButton = e.target.shadowRoot.querySelector('.accessibility-mode > button');
 
@@ -94,9 +98,11 @@ const sk = document.querySelector('helix-sidekick');
 
 if (sk) {
   sk.addEventListener('custom:accessibility-mode', accessibilityMode);
+  sk.addEventListener('custom:visualBlockTree', visualBlockTree);
 } else {
   document.addEventListener('sidekick-ready', () => {
     document.querySelector('helix-sidekick').addEventListener('custom:accessibility-mode', accessibilityMode);
+    document.querySelector('helix-sidekick').addEventListener('custom:visual-block-tree', visualBlockTree);
   }, {
     once: true,
   });
